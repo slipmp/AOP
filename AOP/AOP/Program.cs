@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AOP.Domain.Factory;
+using AOP.Domain.Interface;
+using AOP.Dto;
 namespace AOP.Console
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            IPressReleaseService pressReleaseService = DomainFactory<IPressReleaseService>.Resolve();
+            var entity=new PressReleaseDto{ Body = "My Body", PressReleaseTitle = "My Title", WorkflowId = new Guid() };
+
+            pressReleaseService.InserPressRelease(entity);
+
+            System.Console.ReadKey();
         }
     }
 }

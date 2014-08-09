@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A687157B-16E3-444E-944F-4235E62ABA41}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{81378CD0-FBB0-49D4-86FD-EB3565725371}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AOP.Console</RootNamespace>
-    <AssemblyName>AOP.Console</AssemblyName>
+    <RootNamespace>AOP.Domain.Factory</RootNamespace>
+    <AssemblyName>AOP.Domain.Factory</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,24 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DomainFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AOP.Domain.Factory\AOP.Domain.Factory.csproj">
-      <Project>{81378cd0-fbb0-49d4-86fd-eb3565725371}</Project>
-      <Name>AOP.Domain.Factory</Name>
+    <ProjectReference Include="..\AOP.Domain.Implementation\AOP.Domain.Implementation.csproj">
+      <Project>{4fba41af-e1c5-458a-acf1-c6a0011c33f9}</Project>
+      <Name>AOP.Domain.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AOP.Domain.Interceptor\AOP.Domain.Interceptor.csproj">
+      <Project>{3849c61e-46f1-4f6e-99c9-b8a080cd0b26}</Project>
+      <Name>AOP.Domain.Interceptor</Name>
     </ProjectReference>
     <ProjectReference Include="..\AOP.Domain.Interface\AOP.Domain.Interface.csproj">
       <Project>{15b1c5d4-cebf-499e-bada-6f854246b781}</Project>
       <Name>AOP.Domain.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AOP.Dto\AOP.Dto.csproj">
-      <Project>{3a276f36-cd40-4c6a-8b73-2e2cb89205dd}</Project>
-      <Name>AOP.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
