@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Castle.Windsor;
 using Castle.Core;
 using AOP.Domain.Implementation;
 using AOP.Domain.Interface;
-using Castle.MicroKernel.Registration;
-using Castle.DynamicProxy;
 using AOP.Domain.Interceptor;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.InterceptionExtension;
+
 using Ninject;
-using Ninject.Modules;
+using Ninject.Extensions.Interception;
+using Ninject.Extensions.Interception.Infrastructure.Language;
 
 namespace AOP.Domain.Factory
 {
@@ -22,7 +19,8 @@ namespace AOP.Domain.Factory
         public T Resolve<T>()
         {
             var container = new StandardKernel();
-            container.Bind<IPressReleaseService>().To<PressReleaseService>();
+
+            container.Bind<IPressReleaseService>().To<PressReleaseService>().Intercept().With<NinjectInterceptor>();
 
             return container.Get<T>();
         }
