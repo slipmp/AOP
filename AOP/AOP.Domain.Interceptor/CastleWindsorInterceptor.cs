@@ -7,7 +7,7 @@ using Castle.DynamicProxy;
 
 namespace AOP.Domain.Interceptor
 {
-    public class DomainInterceptor : IInterceptor
+    public class CastleWindsorInterceptor : IInterceptor
     {
         #region IInterceptor Members
 
@@ -23,7 +23,7 @@ namespace AOP.Domain.Interceptor
             }
             catch(Exception ex)
             {
-                Console.WriteLine("An error has occured calling Interceptor");
+                Console.WriteLine("An error has occured calling Interceptor. Error: "+ ex.Message);
             }
             finally
             {

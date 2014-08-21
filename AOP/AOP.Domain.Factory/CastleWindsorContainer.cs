@@ -13,18 +13,18 @@ using AOP.Domain.Interceptor;
 
 namespace AOP.Domain.Factory
 {
-    public static class DomainFactory<T>
+    public class CastleWindsorContainer : IContainer
     {
-        public static T Resolve()
+        public T Resolve<T>()
         {
             // CREATE A WINDSOR CONTAINER OBJECT AND REGISTER THE INTERFACES, AND THEIR CONCRETE IMPLEMENTATIONS.
             var container = new WindsorContainer();
 
             container.Register(
-            Component.For<IInterceptor>().ImplementedBy<DomainInterceptor>());
+            Component.For<IInterceptor>().ImplementedBy<CastleWindsorInterceptor>());
 
             container.Register(Component.For<IPressReleaseService>().ImplementedBy<PressReleaseService>()
-                .Interceptors(InterceptorReference.ForType<IInterceptor>()).Anywhere);
+                .Interceptors(InterceptorReference.ForType<CastleWindsorInterceptor>()).Anywhere);
                
             return container.Resolve<T>();
         }

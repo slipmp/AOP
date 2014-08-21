@@ -12,10 +12,15 @@ namespace AOP.Console
     {
         public static void Main(string[] args)
         {
-            IPressReleaseService pressReleaseService = DomainFactory<IPressReleaseService>.Resolve();
-            var entity=new PressReleaseDto{ Body = "My Body", PressReleaseTitle = "My Title", WorkflowId = new Guid() };
+            foreach (var container in new IoCFactory().GetContainerList())
+            {
+                var pressReleaseService = container.Resolve<IPressReleaseService>();
+                var entity = new PressReleaseDto { Body = "My Body", PressReleaseTitle = "My Title", WorkflowId = new Guid() };
 
-            pressReleaseService.InserPressRelease(entity);
+                pressReleaseService.InserPressRelease(entity);
+
+                //pressReleaseService.GetPressRelease(new Guid());
+            }
 
             System.Console.ReadKey();
         }

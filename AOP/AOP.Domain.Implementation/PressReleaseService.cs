@@ -17,6 +17,7 @@ namespace AOP.Domain.Implementation
 
         public PressReleaseDto GetPressRelease(Guid workflowId)
         {
+            throw new Exception("Error at GetPressRelease");
             Console.WriteLine("Getting a PressReleaseDto from Repository");
 
             return new PressReleaseDto { Body = "My Body", PressReleaseTitle = "My Title", WorkflowId = new Guid() };

@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainFactory.cs" />
+    <Compile Include="CastleWindsorContainer.cs" />
+    <Compile Include="IContainer.cs" />
+    <Compile Include="IoCFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
