@@ -15,19 +15,19 @@ namespace AOP.Domain.Interceptor
         {
             try
             {
-                Console.WriteLine("Interceptor Called on method " + invocation.Method.Name);
+                Console.WriteLine("Castle Windsor Interceptor Called on method " + invocation.Method.Name);
                 
                 invocation.Proceed();
 
-                Console.WriteLine("Interceptor was successfully executed.");
+                Console.WriteLine("Castle Windsor Interceptor was successfully executed.");
             }
             catch(Exception ex)
             {
-                Console.WriteLine("An error has occured calling Interceptor. Error: "+ ex.Message);
+                Console.WriteLine("Castle Windsor An error has occured calling Interceptor. Error: " + ex.Message);
             }
             finally
             {
-                Console.WriteLine("Interceptor - Finally");
+                Console.WriteLine("Castle Windsor Interceptor - Finally");
             }
         }
 

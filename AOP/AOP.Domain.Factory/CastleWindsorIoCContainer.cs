@@ -13,7 +13,7 @@ using AOP.Domain.Interceptor;
 
 namespace AOP.Domain.Factory
 {
-    public class CastleWindsorContainer : IContainer
+    public class CastleWindsorIoCContainer : IContainer
     {
         public T Resolve<T>()
         {

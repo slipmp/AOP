@@ -11,8 +11,9 @@ namespace AOP.Domain.Factory
         public List<IContainer> GetContainerList()
         {
             var containerList = new List<IContainer>();
-            
-            containerList.Add(new CastleWindsorContainer());
+
+            containerList.Add(new CastleWindsorIoCContainer());
+            containerList.Add(new UnityIoCContainer());
 
             return containerList;
         }
