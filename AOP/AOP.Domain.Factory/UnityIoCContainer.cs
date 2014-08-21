@@ -11,6 +11,7 @@ using Castle.MicroKernel.Registration;
 using Castle.DynamicProxy;
 using AOP.Domain.Interceptor;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace AOP.Domain.Factory
 {
@@ -20,7 +21,10 @@ namespace AOP.Domain.Factory
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IPressReleaseService, PressReleaseService>();
+            container.AddNewExtension<Interception>();
+            container.RegisterType<IPressReleaseService, PressReleaseService>(
+                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<UnityInterceptor>());
 
             return container.Resolve<T>();
         }
