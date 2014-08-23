@@ -15,6 +15,7 @@ namespace AOP.Domain.Factory
             containerList.Add(new CastleWindsorIoCContainer());
             containerList.Add(new UnityIoCContainer());
             containerList.Add(new NinjectIoCContainer());
+            containerList.Add(new SimpleInjectorIoCContainer());
 
             return containerList;
         }

@@ -19,7 +19,7 @@ namespace AOP.Console
 
                 pressReleaseService.InserPressRelease(entity);
 
-                pressReleaseService.GetPressRelease(new Guid());
+                //pressReleaseService.GetPressRelease(new Guid());
 
                 System.Console.WriteLine("Container " + container.GetType().Name + " has finished." +
                                          Environment.NewLine);
